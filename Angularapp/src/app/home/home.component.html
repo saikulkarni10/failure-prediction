@@ -1,0 +1,46 @@
+
+
+<!DOCTYPE html>
+<html >
+<head>
+  <meta charset="UTF-8">
+  <title>Acute Liver Failure Prediction</title>
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+
+  
+</head>
+
+<body style="background: #000;">
+   <h1 align="left"><b>Hello {{this.user1}}</b></h1>
+ <div class="login">
+	<h1>Acute Liver Failure Prediction</h1>
+
+     <!-- Main Input For Receiving Query to our ML -->
+    <form >
+	<input type="number"step="0.01" name="age_number" placeholder="Age" required="required" min="0"/>
+        <input type="number" step="0.01"name="gender" placeholder="Gender" required="required" min="0" max="1"/>
+        <input type="number"step="0.01" name="total_bilirubin" placeholder="Total Bilirubin" required="required"/>
+      	<input type="number" step="0.01" name="direct_bilirubin" placeholder="Direct Bilirubin" required="required"/>
+      	<input type="number"step="0.01" name="alkaline_phosphotase" placeholder="Alkaline Phosphotase" required="required"/>
+      	<input type="number" step="0.01" name="alamine_aminotransferase" placeholder="Alamine Aminotransferase" required="required"/>
+      	<input type="number"step="0.01" name="aspartate_aminotransferase" placeholder="Aspartate Aminotransferase" required="required"/>
+      	<input type="number" step="0.01" name="total_protiens" placeholder="Total Protiens" required="required"/>
+        <input type="number" step="0.01" name="albumin" placeholder="Albumin" required="required"/>
+       <input type="number" step="0.01" name="albumin_and_globulin_ratio" placeholder="Albumin and Globulin Ratio" required="required"/>
+
+
+        <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
+    </form>
+
+   <br>
+   <br>
+   
+
+ </div>
+
+
+</body>
+</html>
