@@ -49,6 +49,8 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatTreeModule } from '@angular/material/tree';
 import { HomeComponent } from './home/home.component';
 import { PostsService } from './posts/post-create/posts.service';
+import { HeaderComponent } from './header/header.component';
+import { SignupComponent } from './signup/signup.component';
 //import { PostsService } from './posts/post-create/posts.service';
 
 
@@ -78,6 +80,8 @@ const appRoutes: Routes = [
     AppComponent,
     PostCreateComponent,
     HomeComponent,
+    HeaderComponent,
+    SignupComponent,
     
   ],
   imports: [

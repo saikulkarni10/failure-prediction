@@ -1,0 +1,23 @@
+
+body, html {
+    height: 100%;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  * {
+    box-sizing: border-box;
+  }
+.jumbotron{
+    background-image: url("../../../assets/img/background3.jpg");
+    background-position : center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 500px;
+    position: relative;
+    
+   
+    
+}
+
+.container{
+    min-height: 560px;
+}

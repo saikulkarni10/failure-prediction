@@ -3,7 +3,10 @@ const bodyParser=require("body-parser");
 const Post = require('../models/post');
 const mongooose=require("mongoose");
 
+
 const app=express();
+
+const userRoutes=require("../routes/user");
 
 mongooose.connect("mongodb+srv://sanskriti:smb11398@cluster0-xvmkn.mongodb.net/node-angular?retryWrites=true&w=majority")
 .then(()=>{
@@ -37,11 +40,11 @@ app.post("/api/posts/",(req,res,next)=>{
 });
 
 app.get('/api/posts',(req,res,next)=>{
-    Post.find().then((documemts)=>{
+    Post.find().then((documents)=>{
         console.log(documents)
         res.status(200).json({
             message : "Post fetched successfully!",
-            posts : documemts
+            posts : documents
     });
     // const posts=[
     //     {
@@ -55,4 +58,5 @@ app.get('/api/posts',(req,res,next)=>{
 });
 });
 
+app.use("/api/user",userRoutes);
 module.exports=app;

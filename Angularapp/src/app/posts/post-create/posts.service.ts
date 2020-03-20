@@ -25,7 +25,7 @@ export class PostsService
         const post: Post = {username : username, password : password };
         this.http.post<{message : string}>("http://localhost:3000/api/posts",post).subscribe((responseData)=>{
         console.log(responseData.message);
-        
+        this.postUpdated.next([...this.posts]);    // in order to update when the link is given again, username should change
         });
         this.posts.push(post);
         this.postUpdated.next([...this.posts]);
