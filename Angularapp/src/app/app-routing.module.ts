@@ -9,15 +9,15 @@ const routes: Routes = [
   { path: '',   redirectTo: '/header', pathMatch: 'full' },
   { path: 'header',        component: HeaderComponent },
   { path: 'post-create', component: PostCreateComponent },
-  { path: 'home',        component: HomeComponent , canActivate : [AuthGuard]},
+  { path: 'home',        component: HomeComponent },
   { path: 'signup',        component: SignupComponent },
  
  
 ];
 
-@NgModule({
+@NgModule({  
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule],
-  providers: [AuthGuard]
+  exports: [RouterModule]
+ 
 })
 export class AppRoutingModule { }

@@ -3,6 +3,8 @@ import { PostsService } from '../posts/post-create/posts.service';
 import { Post } from "../posts/post-create/post.model";
 import { Subscriber, Subscription } from "rxjs"; 
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { HomesService } from '../../../homes.service';
+import { Data } from "../../../models/data.model"
 
 @Component({
   selector: 'app-home',
@@ -12,7 +14,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 
 export class HomeComponent implements OnInit, OnDestroy {
-
+  data : Data =new Data();
   posts:Post[]=[];
   user1:string;
   private postsSub : Subscription;
@@ -43,9 +45,10 @@ export class HomeComponent implements OnInit, OnDestroy {
   imagePreview: string;
   
  
-  constructor(public postsService:PostsService) { }
+  constructor(public postsService:PostsService,private homesService : HomesService) { }
 
   ngOnInit(): void { 
+    
     //this.form=new FormGroup({
       //"age-number": new FormControl(null,{validators :[Validators.required, Validators.min(0)]}),
       //"gender": new FormControl(null,{validators :[Validators.required, Validators.max(1)]}),
@@ -76,26 +79,30 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   Predict()
   {
-    this.enteredAge=this._Age;
-    this.enteredGender=this._Gender;
-    this.total_bilirubin=this._Total_bilirubin;
-    this.direct_bilirubin=this._Direct_bilirubin;
-    this.alkaline_phosphotase=this._Alkaline_phosphotase;
-    this.alamine_aminotransferase=this._Alamine_aminotransferase;
-    this.aspartate_aminotransferase=this._Aspartate_aminotransferase;
-    this.total_proteins=this._Total_proteins;
-    this.albumin=this._Albumin;
-    this.albumin_and_globulin_ratio=this._Albumin_and_globulin_ratio;
-    console.log(this.enteredAge);
-    console.log(this.enteredGender);
-    console.log(this.total_bilirubin);
-    console.log(this.direct_bilirubin);
-    console.log(this.alkaline_phosphotase);
-    console.log(this.alamine_aminotransferase);
-    console.log(this.aspartate_aminotransferase);
-    console.log(this.total_proteins);
-    console.log(this.albumin);
-    console.log(this.albumin_and_globulin_ratio);
+    this.data.enteredAge=this._Age;
+    this.data.enteredGender=this._Gender;
+    this.data.total_bilirubin=this._Total_bilirubin;
+    this.data.direct_bilirubin=this._Direct_bilirubin;
+    this.data.alkaline_phosphotase=this._Alkaline_phosphotase;
+    this.data.alamine_aminotransferase=this._Alamine_aminotransferase;
+    this.data.aspartate_aminotransferase=this._Aspartate_aminotransferase;
+    this.data.total_proteins=this._Total_proteins;
+    this.data.albumin=this._Albumin;
+    this.data.albumin_and_globulin_ratio=this._Albumin_and_globulin_ratio;
+
+    this.homesService.setData(this.data);
+    // console.log(this.enteredAge);
+    // console.log(this.enteredGender);
+    // console.log(this.total_bilirubin);
+    // console.log(this.direct_bilirubin);
+    // console.log(this.alkaline_phosphotase);
+    // console.log(this.alamine_aminotransferase);
+    // console.log(this.aspartate_aminotransferase);
+    // console.log(this.total_proteins);
+    // console.log(this.albumin);
+    // console.log(this.albumin_and_globulin_ratio);
+
+    //this.homesService.enteredData(this.enteredAge);
   }
 
   onImagePicked(event : Event)
