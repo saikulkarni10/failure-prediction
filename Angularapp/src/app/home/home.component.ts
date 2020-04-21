@@ -5,6 +5,7 @@ import { Subscriber, Subscription } from "rxjs";
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { HomesService } from '../../../homes.service';
 import { Data } from "../../../models/data.model"
+import { AuthService } from '../signup/auth.service';
 
 @Component({
   selector: 'app-home',
@@ -45,7 +46,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   imagePreview: string;
   
  
-  constructor(public postsService:PostsService,private homesService : HomesService) { }
+  constructor(public postsService:PostsService,private homesService : HomesService, private authService : AuthService) { }
 
   ngOnInit(): void { 
     
@@ -69,7 +70,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.postsSub=this.postsService.getPostUpdatedListener().subscribe((posts:Post[])=>{
     this.posts=posts;
     
-
+    
     
     
     });
@@ -103,7 +104,14 @@ export class HomeComponent implements OnInit, OnDestroy {
     // console.log(this.albumin_and_globulin_ratio);
 
     //this.homesService.enteredData(this.enteredAge);
+
+    //this.authService.sendData(this.data.enteredAge,this.data.enteredGender,this.data.total_bilirubin,this.data.direct_bilirubin,this.data.alkaline_phosphotase,this.data.alamine_aminotransferase,this.data.aspartate_aminotransferase,this.data.total_proteins,this.data.albumin,this.data.albumin_and_globulin_ratio);
   }
+  SaveData()
+  {
+    this.authService.sendData(this.data.enteredAge,this.data.enteredGender,this.data.total_bilirubin,this.data.direct_bilirubin,this.data.alkaline_phosphotase,this.data.alamine_aminotransferase,this.data.aspartate_aminotransferase,this.data.total_proteins,this.data.albumin,this.data.albumin_and_globulin_ratio);
+  }
+
 
   onImagePicked(event : Event)
   {
@@ -113,7 +121,12 @@ export class HomeComponent implements OnInit, OnDestroy {
       this.imagePreview=reader.result as string;
     };
     reader.readAsDataURL(file);
-  }  
+  }    
+
+  CheckResult(){
+    
+
+  }
   ngOnDestroy(){
     this.postsSub.unsubscribe();
   }

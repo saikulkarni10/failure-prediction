@@ -7,6 +7,7 @@ from flask import jsonify, json
 from flask import request
 import pickle
 import numpy as np
+import pandas as pd
 
 # Flask constructor takes the name of  
 # current module (__name__) as argument. 
@@ -21,12 +22,13 @@ model = pickle.load(open('model.pkl', 'rb'))
 @app.route('/hello', methods=['GET','POST']) 
 
 # ‘/’ URL is bound with hello_world() function. 
-def hello_world(): 
+def hello(): 
+    
     url_responser={}
     values_list=[]
     #res=request.get_json()
     #print(res)
-    url_response=request.data.decode()    
+    url_response=request.data.decode()      
     response=json.loads(url_response)
     age=response['enteredAge']
     gender=response["enteredGender"]
@@ -38,7 +40,18 @@ def hello_world():
     total_proteins=response["total_proteins"]
     albumin=response["albumin"]
     albumin_and_globulin_ratio=response["albumin_and_globulin_ratio"]
-    #print(age,gender,total_bilirubin,direct_bilirubin,alkaline_phosphotase,alamine_aminotransferase,aspartate_aminotransferase,total_proteins,albumin,albumin_and_globulin_ratio)
+    
+    df=pd.DataFrame()
+    
+    # df1= df.append({"Age":age,"Gender": gender,"Total_bilirubin":total_bilirubin,
+    # "Direct_bilirubin":direct_bilirubin,"Alkaline_phosphotase":alkaline_phosphotase,
+    # "Alamine_aminotransferase":alamine_aminotransferase,"Aspartate_aminotransferase":aspartate_aminotransferase,
+    # "Total_proteins":total_proteins,"Albumin":albumin,"Albumin_and_globulin_ratio":albumin_and_globulin_ratio},ignore_index=True)
+
+    df1=pd.DataFrame()
+    
+
+
 
     print(response.values())
 
@@ -47,9 +60,16 @@ def hello_world():
     print(output)
     #return Response(output)
     if(output==0):
+        df1=df.append([[age,gender,total_bilirubin,direct_bilirubin,alkaline_phosphotase,
+    alamine_aminotransferase,aspartate_aminotransferase,total_proteins,albumin,albumin_and_globulin_ratio,0]])
+        df1.to_csv(r"C:\Users\admin\Desktop\Project Data\TestUserData.csv",mode='a',header=False,index=False)
         return Response("0")
+        
     else:
-         return Response("1")
+        df1=df.append([[age,gender,total_bilirubin,direct_bilirubin,alkaline_phosphotase,
+    alamine_aminotransferase,aspartate_aminotransferase,total_proteins,albumin,albumin_and_globulin_ratio,1]])
+        df1.to_csv(r"C:\Users\admin\Desktop\Project Data\TestUserData.csv",mode='a',header=False,index=False)
+        return Response("1")
 
     
     

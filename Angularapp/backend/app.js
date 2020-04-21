@@ -7,6 +7,7 @@ const mongooose=require("mongoose");
 const app=express();
 
 const userRoutes=require("../routes/user");
+const dataRoutes=require("../routes/inputdata");
 
 mongooose.connect("mongodb+srv://sanskriti:smb11398@cluster0-xvmkn.mongodb.net/node-angular?retryWrites=true&w=majority")
 .then(()=>{
@@ -59,4 +60,5 @@ app.get('/api/posts',(req,res,next)=>{
 });
 
 app.use("/api/user",userRoutes);
+app.use("/api/data",dataRoutes);
 module.exports=app;

@@ -33,9 +33,9 @@ export class HomesService{
         console.log(this.data1);
         this.http.post<string>(this.baseUrl,this.data1,httpOptions).subscribe(data2=>{
             if(data2=="1")
-           alert("The patient is likely to have a liver liver failure.");
+           alert("The patient is likely to have a  liver failure.");
            else{
-            document.write("The patient is not likely to have a liver  failure.");
+            alert("The patient is not likely to have a liver  failure.");
            }
           
         });
@@ -47,6 +47,6 @@ export class HomesService{
         console.log("Age :"+this.age1);
     }
 
-
+  
     }
 

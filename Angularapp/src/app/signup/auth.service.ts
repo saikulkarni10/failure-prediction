@@ -4,7 +4,7 @@ import { AuthData } from './auth-data.model';
 import { EmailValidator } from '@angular/forms';
 import { Router } from "@angular/router";
 import { Subject } from 'rxjs';
-
+import { Data } from "../../../models/data.model"
 
 
 @Injectable({providedIn:'root'})
@@ -44,21 +44,22 @@ export class AuthService{
            const token=response.token;
            this.token=token;
            console.log(this.token);
-            if(!response)
-            {
-                alert("Invalid Username or password!!")
-            }
-           else{
+            
+          
            this.isAuthenticated=true;
            this.authStatusListener.next(true);
             console.log(response);
            
             alert("Logged in successfully!");
             this.router.navigateByUrl("/home");
-           }
+           
            
           
-        });
+        },(error)=>{
+            console.log("Invalid Username or password, please try again.")
+            alert("Invalid Username or Password. Try again!");
+        }
+        );
     }
 
     logout(){
@@ -69,4 +70,16 @@ export class AuthService{
 
     }
 
+    sendData(enteredAge : number,enteredGender : number,total_bilirubin :number,direct_bilirubin: number,alkaline_phosphotase : number,alamine_aminotransferase : number,aspartate_aminotransferase : number,total_proteins : number,albumin : number,albumin_and_globulin_ratio: number)
+    {
+       const InputData:Data ={enteredAge : enteredAge,enteredGender : enteredGender,total_bilirubin :total_bilirubin ,direct_bilirubin: direct_bilirubin,alkaline_phosphotase : alkaline_phosphotase,alamine_aminotransferase : alamine_aminotransferase,aspartate_aminotransferase : aspartate_aminotransferase,total_proteins : total_proteins,albumin : albumin,albumin_and_globulin_ratio:  albumin_and_globulin_ratio};     
+       this.http.post("http://localhost:3000/api/data/inputdata",InputData)
+       .subscribe(response=>{
+           if(response){
+           console.log(response);
+           }
+           
+       });
 }
+    }
+
