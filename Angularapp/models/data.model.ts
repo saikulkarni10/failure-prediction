@@ -1,7 +1,9 @@
 export class Data{
     enteredAge : number;
   
-  enteredGender : number;
+  enteredGenderF : number;
+ 
+  enteredGenderM : number;
 
   total_bilirubin :number;
  

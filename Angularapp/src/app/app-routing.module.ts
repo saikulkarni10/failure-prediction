@@ -6,7 +6,7 @@ import { HeaderComponent } from './header/header.component';
 import { SignupComponent } from './signup/signup.component';
 import { AuthGuard } from './signup/auth.guard';
 const routes: Routes = [
-  { path: '',   redirectTo: '/header', pathMatch: 'full' },
+  { path: '',   redirectTo: '/post-create', pathMatch: 'full' },
   { path: 'header',        component: HeaderComponent },
   { path: 'post-create', component: PostCreateComponent },
   { path: 'home',        component: HomeComponent },

@@ -3,7 +3,8 @@ const mongoose=require("mongoose");
 
 const dataSchema=mongoose.Schema({
     enteredAge : {type : Number , required : true,sparse:true},
-    enteredGender : { type : Number , required : true,sparse:true},
+    enteredGenderF : { type : Number , required : true,sparse:true},
+    enteredGenderM : { type : Number , required : true,sparse:true},
     total_bilirubin : {type : Number , required : true,sparse:true},
     direct_bilirubin : {type : Number , required : true,sparse:true},
     alkaline_phosphotase : {type : Number , required : true,sparse:true},

@@ -31,7 +31,8 @@ def hello():
     url_response=request.data.decode()      
     response=json.loads(url_response)
     age=response['enteredAge']
-    gender=response["enteredGender"]
+    genderF=response["enteredGenderF"]
+    genderM=response["enteredGenderM"]
     total_bilirubin=response["total_bilirubin"]
     direct_bilirubin=response["direct_bilirubin"]
     alkaline_phosphotase=response["alkaline_phosphotase"]
@@ -42,31 +43,28 @@ def hello():
     albumin_and_globulin_ratio=response["albumin_and_globulin_ratio"]
     
     df=pd.DataFrame()
-    
-    # df1= df.append({"Age":age,"Gender": gender,"Total_bilirubin":total_bilirubin,
+    df1=pd.DataFrame()
+    # df1= df.append({"Age":age,"Gender_0": genderF,"Gender_1":"genderM","Total_bilirubin":total_bilirubin,
     # "Direct_bilirubin":direct_bilirubin,"Alkaline_phosphotase":alkaline_phosphotase,
     # "Alamine_aminotransferase":alamine_aminotransferase,"Aspartate_aminotransferase":aspartate_aminotransferase,
     # "Total_proteins":total_proteins,"Albumin":albumin,"Albumin_and_globulin_ratio":albumin_and_globulin_ratio},ignore_index=True)
 
-    df1=pd.DataFrame()
-    
-
-
-
     print(response.values())
-
-    prediction = model.predict([np.array(list(response.values()))])
-    output =prediction[0]
-    print(output)
+    print(type(response.values))
+    
+    
+    prediction = model.predict(np.array(list(response.values())).reshape(1,-1))
+    output =prediction
+    # print(output)
     #return Response(output)
     if(output==0):
-        df1=df.append([[age,gender,total_bilirubin,direct_bilirubin,alkaline_phosphotase,
+        df1=df.append([[age,genderF,genderM,total_bilirubin,direct_bilirubin,alkaline_phosphotase,
     alamine_aminotransferase,aspartate_aminotransferase,total_proteins,albumin,albumin_and_globulin_ratio,0]])
         df1.to_csv(r"C:\Users\admin\Desktop\Project Data\TestUserData.csv",mode='a',header=False,index=False)
         return Response("0")
         
     else:
-        df1=df.append([[age,gender,total_bilirubin,direct_bilirubin,alkaline_phosphotase,
+        df1=df.append([[age,genderF,genderM,total_bilirubin,direct_bilirubin,alkaline_phosphotase,
     alamine_aminotransferase,aspartate_aminotransferase,total_proteins,albumin,albumin_and_globulin_ratio,1]])
         df1.to_csv(r"C:\Users\admin\Desktop\Project Data\TestUserData.csv",mode='a',header=False,index=False)
         return Response("1")

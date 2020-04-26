@@ -70,9 +70,9 @@ export class AuthService{
 
     }
 
-    sendData(enteredAge : number,enteredGender : number,total_bilirubin :number,direct_bilirubin: number,alkaline_phosphotase : number,alamine_aminotransferase : number,aspartate_aminotransferase : number,total_proteins : number,albumin : number,albumin_and_globulin_ratio: number)
+    sendData(enteredAge : number,enteredGenderF : number,enteredGenderM: number,total_bilirubin :number,direct_bilirubin: number,alkaline_phosphotase : number,alamine_aminotransferase : number,aspartate_aminotransferase : number,total_proteins : number,albumin : number,albumin_and_globulin_ratio: number)
     {
-       const InputData:Data ={enteredAge : enteredAge,enteredGender : enteredGender,total_bilirubin :total_bilirubin ,direct_bilirubin: direct_bilirubin,alkaline_phosphotase : alkaline_phosphotase,alamine_aminotransferase : alamine_aminotransferase,aspartate_aminotransferase : aspartate_aminotransferase,total_proteins : total_proteins,albumin : albumin,albumin_and_globulin_ratio:  albumin_and_globulin_ratio};     
+       const InputData:Data ={enteredAge : enteredAge,enteredGenderF : enteredGenderF,enteredGenderM:enteredGenderM,total_bilirubin :total_bilirubin ,direct_bilirubin: direct_bilirubin,alkaline_phosphotase : alkaline_phosphotase,alamine_aminotransferase : alamine_aminotransferase,aspartate_aminotransferase : aspartate_aminotransferase,total_proteins : total_proteins,albumin : albumin,albumin_and_globulin_ratio:  albumin_and_globulin_ratio};     
        this.http.post("http://localhost:3000/api/data/inputdata",InputData)
        .subscribe(response=>{
            if(response){

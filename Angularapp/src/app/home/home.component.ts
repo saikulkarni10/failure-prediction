@@ -25,8 +25,10 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   enteredAge : number;
   _Age=null;
-  enteredGender : number;
-  _Gender=null;
+  enteredGenderF : number;
+  _GenderF=null;
+  enteredGenderM : number;
+  _GenderM=null;
   total_bilirubin :number;
   _Total_bilirubin=null;
   direct_bilirubin: number;
@@ -81,7 +83,8 @@ export class HomeComponent implements OnInit, OnDestroy {
   Predict()
   {
     this.data.enteredAge=this._Age;
-    this.data.enteredGender=this._Gender;
+    this.data.enteredGenderF=this._GenderF;
+    this.data.enteredGenderM=this._GenderM;
     this.data.total_bilirubin=this._Total_bilirubin;
     this.data.direct_bilirubin=this._Direct_bilirubin;
     this.data.alkaline_phosphotase=this._Alkaline_phosphotase;
@@ -105,12 +108,12 @@ export class HomeComponent implements OnInit, OnDestroy {
 
     //this.homesService.enteredData(this.enteredAge);
 
-    //this.authService.sendData(this.data.enteredAge,this.data.enteredGender,this.data.total_bilirubin,this.data.direct_bilirubin,this.data.alkaline_phosphotase,this.data.alamine_aminotransferase,this.data.aspartate_aminotransferase,this.data.total_proteins,this.data.albumin,this.data.albumin_and_globulin_ratio);
+    this.authService.sendData(this.data.enteredAge,this.data.enteredGenderF,this.data.enteredGenderM,this.data.total_bilirubin,this.data.direct_bilirubin,this.data.alkaline_phosphotase,this.data.alamine_aminotransferase,this.data.aspartate_aminotransferase,this.data.total_proteins,this.data.albumin,this.data.albumin_and_globulin_ratio);
   }
-  SaveData()
-  {
-    this.authService.sendData(this.data.enteredAge,this.data.enteredGender,this.data.total_bilirubin,this.data.direct_bilirubin,this.data.alkaline_phosphotase,this.data.alamine_aminotransferase,this.data.aspartate_aminotransferase,this.data.total_proteins,this.data.albumin,this.data.albumin_and_globulin_ratio);
-  }
+  // SaveData()
+  // {
+  //   this.authService.sendData(this.data.enteredAge,this.data.enteredGenderF,this.data.enteredGenderM,this.data.total_bilirubin,this.data.direct_bilirubin,this.data.alkaline_phosphotase,this.data.alamine_aminotransferase,this.data.aspartate_aminotransferase,this.data.total_proteins,this.data.albumin,this.data.albumin_and_globulin_ratio);
+  // }
 
 
   onImagePicked(event : Event)
@@ -123,10 +126,10 @@ export class HomeComponent implements OnInit, OnDestroy {
     reader.readAsDataURL(file);
   }    
 
-  CheckResult(){
+  // CheckResult(){
     
 
-  }
+  // }
   ngOnDestroy(){
     this.postsSub.unsubscribe();
   }

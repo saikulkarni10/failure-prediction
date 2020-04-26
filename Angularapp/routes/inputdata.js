@@ -22,7 +22,8 @@ router.post("/inputdata",(req,res,next)=>{
        // console.log("Hi 1");
         const input1=new Input({
             enteredAge : req.body.enteredAge,
-            enteredGender : req.body.enteredGender,
+            enteredGenderF : req.body.enteredGenderF,
+            enteredGenderM : req.body.enteredGenderM,
             total_bilirubin : req.body.total_bilirubin,
             direct_bilirubin : req.body.direct_bilirubin,
             alkaline_phosphotase : req.body.alkaline_phosphotase,

@@ -33,7 +33,8 @@
      <!-- Main Input For Receiving Query to our ML -->
     <form>
 	      <input type="number"step="0.01" [(ngModel)]="_Age" name="age_number" placeholder="Age" required="required" />
-        <input type="number" step="0.01" [(ngModel)]="_Gender" name="gender" placeholder="Gender" required="required" min="0" max="1"/>
+        <input type="number" step="0.01" [(ngModel)]="_GenderF" name="gender_f" placeholder="Gender_Female" required="required" min="0" max="1"/>
+        <input type="number" step="0.01" [(ngModel)]="_GenderM" name="gender_m" placeholder="Gender_Male" required="required" min="0" max="1"/>
         <input type="number"step="0.01"  [(ngModel)]="_Total_bilirubin" name="total_bilirubin" placeholder="Total Bilirubin" required="required"/>
       	<input type="number" step="0.01" [(ngModel)]="_Direct_bilirubin" name="direct_bilirubin" placeholder="Direct Bilirubin" required="required"/>
       	<input type="number"step="0.01" [(ngModel)]="_Alkaline_phosphotase" name="alkaline_phosphotase" placeholder="Alkaline Phosphotase" required="required"/>
@@ -45,14 +46,14 @@
         
 
         <button type="submit" class="btn btn-primary btn-block btn-large" (click)="Predict()">Predict</button>
-        <button type="submit" class="btn btn-primary btn-block btn-large" (click)="SaveData()">Save Data</button>
-        <button onclick="document.getElementById('id01').style.display='block'"    class="btn btn-primary btn-block btn-large">Check Results</button>
+        <!-- <button type="submit" class="btn btn-primary btn-block btn-large" (click)="SaveData()">Save Data</button> -->
+        <!-- <button onclick="document.getElementById('id01').style.display='block'"    class="btn btn-primary btn-block btn-large">Check Results</button> -->
 
           
     </form>
 
     
-    <div id="id01" class="modal">
+    <!-- <div id="id01" class="modal">
       <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
       <form class="modal-content" action="/action_page.php">
         <div class="container">
@@ -88,7 +89,7 @@
       }
     }
     </script>
-            
+             -->
            
     
 
